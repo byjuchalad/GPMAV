@@ -1,0 +1,13 @@
+REGEDIT4
+
+[HKEY_CLASSES_ROOT\CLSID\{e76d8ce0-8944-4fed-b363-c2df08724673}]
+   @="GPMAV Shell Extension"
+[HKEY_CLASSES_ROOT\CLSID\{e76d8ce0-8944-4fed-b363-c2df08724673}\InProcServer32]
+   @="C:\\Program Files\\Microsoft Visual Studio 11.0\\VC\\CNTXDLL\\Release\\ExpShell.dll"
+     "ThreadingModel"="Apartment"
+
+[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\GPMAV]
+   @="{e76d8ce0-8944-4fed-b363-c2df08724673}"
+
+[HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\GPMAV]
+   @="{e76d8ce0-8944-4fed-b363-c2df08724673}"

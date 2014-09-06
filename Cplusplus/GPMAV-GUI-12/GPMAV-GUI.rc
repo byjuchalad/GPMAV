@@ -1,0 +1,199 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP              BITMAP                  "GPMBANNER_1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAIN DIALOGEX 0, 0, 501, 334
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "GPM Antivirus 2014 Scan GUI"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Custom Scan",IDC_SCAN,410,46,78,14
+    EDITTEXT        IDC_TARGET,5,29,452,15,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "...",IDC_BROWSE,464,29,23,15
+    CONTROL         "Scan All Drives",IDC_ALLDRIVES,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,12,58,78,11
+    CONTROL         "Scan Folders ",IDC_RECURSE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,68,78,11
+    CONTROL         "Show only infected",IDC_ONLYINFECTED,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,12,78,78,11
+    CONTROL         "Load Database",IDC_db,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,94,76,78,11
+    PUSHBUTTON      "Cancel Operation",IDC_CANCEL,411,110,79,14
+    EDITTEXT        IDC_STATUS,9,130,490,199,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+    GROUPBOX        "Scan Options",IDC_STATIC,8,47,171,81,WS_GROUP
+    PUSHBUTTON      "Update VDB",IDC_UPDATE,411,78,77,15
+    CONTROL         "Beep",IDC_BEEP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,89,72,10
+    CONTROL         "Save to Log File",IDC_LOG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,98,69,10
+    CONTROL         "Use Tempdir",IDC_TEMP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,108,77,10
+    CONTROL         "No Summary",IDC_NOSUMMARY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,94,58,72,10
+    CONTROL         "Debug Mode",IDC_DEBUG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,94,66,73,10
+    CONTROL         "Remove Viruses",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON,94,105,67,10
+    CONTROL         "Quarantine Viruses",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,94,114,77,10
+    CONTROL         "Quiet",IDC_QUIET,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,94,86,33,8
+    CONTROL         "Report Infected File(s)",IDC_REPORT,"Button",BS_AUTORADIOBUTTON,94,96,84,8
+    CONTROL         101,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,0,1,501,24
+    GROUPBOX        "Extra Scan Options",IDC_STATIC,183,44,214,80,WS_GROUP
+    CONTROL         "Verbose",IDC_EXVERBOSE,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,57,42,11
+    CONTROL         "Do not Remove Temp Files",IDC_EXDONOTREMTEMP,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,68,95,11
+    CONTROL         "Load Official DB Only",IDC_LOADONLYODB,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,80,78,11
+    CONTROL         "Detect PUA",IDC_DETECTPUA,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,91,78,11
+    CONTROL         "Detect Broken EXE Files",IDC_DETECTBROKENEXE,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,101,94,11
+    CONTROL         "Block Encrypted Archives",IDC_BLOCKENCARCH,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,111,96,11
+    CONTROL         "Do not scan files > 200MB",IDC_DONOTSCAN150,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,289,56,102,11
+    CONTROL         "Scan Mail Files",IDC_SCANMAIL,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,289,68,78,11
+    CONTROL         "Algorithmic Detection",IDC_USEALGO,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,289,79,78,11
+    CONTROL         "Max Recursion 50",IDC_MAXRECUR,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,289,90,78,11
+    CONTROL         "Max Files 500",IDC_MAXFILES,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,289,101,78,11
+    CONTROL         "Max Scan Size 150MB",IDC_MAXFILESIZE,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,289,111,96,11
+    PUSHBUTTON      "VDB2",IDC_DISPVDB2,440,94,22,14
+    PUSHBUTTON      "VDB3",IDC_DISPVDB3,467,95,22,14
+    PUSHBUTTON      "Scan Memory",IDC_SCANMEM,410,62,79,14
+    PUSHBUTTON      "VDB1",IDC_DISPVDB1,412,95,22,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON                    "GPMAV-GUI.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 14,0,0,5
+ PRODUCTVERSION 14,0,0,5
+ FILEFLAGSMASK 0x0L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x0L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "Comments", "GPM Antivirus Scanner GUI"
+            VALUE "CompanyName", "GPM"
+            VALUE "FileDescription", "GPMAV SCANGUI"
+            VALUE "FileVersion", "14.0.0.5"
+            VALUE "InternalName", "GPMAV-SCANGUI.exe"
+            VALUE "LegalCopyright", "Copyright (C) 2010-2014 GPM / ClamWin Pty. Ltd."
+            VALUE "LegalTrademarks", "GPM"
+            VALUE "OriginalFilename", "GPMAV-SCANGUI.exe"
+            VALUE "OriginalFileVersion", "14, 0, 0, 5"
+            VALUE "ProductName", "GPMAV SCANGUI"
+            VALUE "ProductVersion", "14.0.0.5"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_MAIN, DIALOG
+    BEGIN
+        MOCKUP, 0, 100, 0, 0, ".\GPMBANNER_1.bmp"
+        VERTGUIDE, 88
+        VERTGUIDE, 93
+        VERTGUIDE, 109
+        VERTGUIDE, 214
+        BOTTOMMARGIN, 329
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
