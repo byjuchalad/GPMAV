@@ -1,6 +1,4 @@
-﻿Imports System.Resources
-
-Imports System
+﻿Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -10,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("GPM Antivirus")> 
-<Assembly: AssemblyDescription("GPM Antivirus")> 
+<Assembly: AssemblyTitle("GPMAVSvcDel")> 
+<Assembly: AssemblyDescription("GPMAVSvcDel")> 
 <Assembly: AssemblyCompany("GPM")> 
-<Assembly: AssemblyProduct("GPM Antivirus")> 
+<Assembly: AssemblyProduct("GPMAVSvcDel")> 
 <Assembly: AssemblyCopyright("Copyright ©  2014 GPM")> 
-<Assembly: AssemblyTrademark("GPM Antivirus is a trademark of GPM.")> 
+<Assembly: AssemblyTrademark("")> 
 
-<Assembly: ComVisible(False)> 
+<Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("0c5d429b-229e-440c-b491-5e34cd0a579c")> 
+<Assembly: Guid("7b2f6670-ef6f-4b12-ac3e-434eb1c4e3cd")> 
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -33,7 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("4.0.0.2")> 
-<Assembly: AssemblyFileVersion("4.0.0.2")> 
-
-<Assembly: NeutralResourcesLanguageAttribute("en-PH")> 
+<Assembly: AssemblyVersion("1.0.0.1")> 
+<Assembly: AssemblyFileVersion("1.0.0.1")> 

@@ -2,7 +2,7 @@
 'Description: GPM Antivirus GUI
 'Copyright 2010-2014 GPM
 'Original Author: GPM
-'Modified By:  
+'Modified By: GPN 10/14/14 1520H-2308H
 
 'This file is part of GPM Antivirus.
 
@@ -17,6 +17,7 @@
 
 'A copy of the GNU General Public License can be found at
 '<http://www.gnu.org/licenses/>.
+
 Option Strict Off
 Imports System
 Imports System.IO
@@ -32,7 +33,7 @@ Imports System.Threading
 
 Public Class frmMain
 
-#Region "DeclareationS"
+#Region "Declarations"
 
     Inherits System.Windows.Forms.Form
     Private Const DIR_MESSAGE As String = "Directory to download"
@@ -44,14 +45,13 @@ Public Class frmMain
     Dim Sec As Integer
     Dim TimeLeft As Integer = 0
 
-    Dim AppDataPath As String = Application.StartupPath & "\Data"
-    Dim PathtoDL As String = Application.StartupPath & "\TEMP\HOSTS"
-    Dim PathtoTemp As String = Application.StartupPath & "\TEMP"
+    Dim AppDataPath As String = New System.IO.FileInfo(Application.ExecutablePath).DirectoryName & "\Data"
+    Dim PathtoDL As String = New System.IO.FileInfo(Application.ExecutablePath).DirectoryName & "\TEMP\HOSTS"
+    Dim PathtoTemp As String = New System.IO.FileInfo(Application.ExecutablePath).DirectoryName & "\TEMP"
     Dim DL1 As String = "http://winhelp2002.mvps.org/hosts.txt"
     Dim DL2 As String = "http://hosts-file.net/.%5Cad_servers.txt"
     'Dim DL3 As String = "http://pgl.yoyo.org/adservers/serverlist.php"
-
-    'Dim DL3 As String = "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
+    ' Dim DL3 As String = "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
 
     Dim SYS As String = GetSpecialFolder(Environment.SpecialFolder.System)
 
@@ -73,12 +73,13 @@ Public Class frmMain
     Private clean As New UniducksCleaner
     Private hasTreeNodesExpanded As Boolean = False
 
-    Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        e.Cancel = True
-        Me.Hide()
-        systray1.Visible = True
-
-    End Sub
+    'Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    ''    Me.Close()
+    '   End
+    '   Application.ExitThread()
+    '   Application.Exit()
+    'StackOverflowException
+    ' End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -129,7 +130,7 @@ Public Class frmMain
             Me.tvwUserSystem.Nodes(0).EnsureVisible()
 
 
-            systray1.Visible = True
+
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
         End Try
@@ -140,8 +141,10 @@ Public Class frmMain
     Private Sub btnMinTray_Click(sender As Object, e As EventArgs) Handles btnMinTray.Click
 
         Try
-            Me.Hide()
-            systray1.Visible = True
+            Me.Close()
+            Application.Exit()
+            Application.ExitThread()
+            End
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
         End Try
@@ -265,12 +268,20 @@ Public Class frmMain
 
     Private Sub btnDLApply_Click(sender As Object, e As EventArgs) Handles btnDLApply.Click
         Try
+
+            If Not Directory.Exists(AppDataPath) Then Directory.CreateDirectory(AppDataPath)
+            If Not Directory.Exists(PathtoTemp) Then Directory.CreateDirectory(PathtoTemp)
+            If Not Directory.Exists(PathtoDL) Then Directory.CreateDirectory(PathtoDL)
+
             If IO.File.Exists(PathtoDL & "\dl1.txt") Then IO.File.Delete(PathtoDL & "\dl1.txt")
             If IO.File.Exists(PathtoDL & "\dl2.txt") Then IO.File.Delete(PathtoDL & "\dl2.txt")
             If IO.File.Exists(DataHosts) Then IO.File.Delete(DataHosts)
-            If Not Directory.Exists(AppDataPath) Then Directory.CreateDirectory(AppDataPath)
-            If Not Directory.Exists(PathtoTemp) Then Directory.CreateDirectory(PathtoTemp)
+            If IO.File.Exists(BkHosts) Then IO.File.Delete(BkHosts)
 
+            If Not IO.File.Exists(PathtoDL & "\dl1.txt") Then IO.File.Create(PathtoDL & "\dl1.txt").Dispose()
+            If Not IO.File.Exists(PathtoDL & "\dl2.txt") Then IO.File.Create(PathtoDL & "\dl2.txt").Dispose()
+            If Not IO.File.Exists(DataHosts) Then IO.File.Create(DataHosts).Dispose()
+            If Not IO.File.Exists(BkHosts) Then IO.File.Create(BkHosts).Dispose()
 
             _Downloader = New WebFileDownloader
 
@@ -282,7 +293,7 @@ Public Class frmMain
 
 
             Dim StartDirectory As String = PathtoDL
-            Dim OutPutFile As String = Application.StartupPath & "\DATA\HOSTS.txt"
+            Dim OutPutFile As String = New System.IO.FileInfo(Application.ExecutablePath).DirectoryName & "\DATA\HOSTS.txt"
 
             Dim SW As New IO.StreamWriter(OutPutFile, False)
 
@@ -304,9 +315,9 @@ Public Class frmMain
             SW.Flush()
             SW.Close()
 
-            IO.File.Copy(Application.StartupPath & "\Data\HOSTS.txt", DataHosts, True)
+            IO.File.Copy(New System.IO.FileInfo(Application.ExecutablePath).DirectoryName & "\Data\HOSTS.txt", DataHosts, True)
             '   GetFileContents(Application.StartupPath & "\Data\HOSTS.txt")
-            RTF1.Text = My.Computer.FileSystem.ReadAllText(Application.StartupPath & "\Data\HOSTS.txt")
+            RTF1.Text = My.Computer.FileSystem.ReadAllText(New System.IO.FileInfo(Application.ExecutablePath).DirectoryName & "\Data\HOSTS.txt")
             btnApplyHosts.Enabled = True
             MsgBox("Click 'Apply' to Activate Downloaded Hosts Files")
 
@@ -325,15 +336,39 @@ Public Class frmMain
             IO.File.Delete(PathtoDL & "\dl1.txt")
             IO.File.Delete(PathtoDL & "\dl2.txt")
 
+
+
             If File.Exists(HostsSys) Then File.Copy(HostsSys, BkHosts, True)
-            Process.Start("net", " stop DNSCACHE")
+            Dim p As New ProcessStartInfo("net", " stop DNSCACHE")
+            p.WindowStyle = ProcessWindowStyle.Hidden
+            p.CreateNoWindow = True
+            Process.Start(p)
             If File.Exists(AppDataPath & "\HOSTS.bk") Then
                 File.Delete(HostsSys)
                 File.Copy(DataHosts, HostsSys, True)
-                Process.Start("net", " start DNSCACHE")
+                Dim p1 As New ProcessStartInfo("net", " start DNSCACHE")
+                p1.WindowStyle = ProcessWindowStyle.Hidden
+                p1.CreateNoWindow = True
+                Process.Start(p1)
             End If
             btnRemoveAdBlock.Enabled = True
-            MsgBox("DONE, AdEvader Activated")
+
+            If Not Directory.Exists(AppDataPath) Then Directory.CreateDirectory(AppDataPath)
+            If Not Directory.Exists(PathtoTemp) Then Directory.CreateDirectory(PathtoTemp)
+            If Not Directory.Exists(PathtoDL) Then Directory.CreateDirectory(PathtoDL)
+
+            If IO.File.Exists(PathtoDL & "\dl1.txt") Then IO.File.Delete(PathtoDL & "\dl1.txt")
+            If IO.File.Exists(PathtoDL & "\dl2.txt") Then IO.File.Delete(PathtoDL & "\dl2.txt")
+            If IO.File.Exists(DataHosts) Then IO.File.Delete(DataHosts)
+            If IO.File.Exists(BkHosts) Then IO.File.Delete(BkHosts)
+
+            If Not IO.File.Exists(PathtoDL & "\dl1.txt") Then IO.File.Create(PathtoDL & "\dl1.txt").Dispose()
+            If Not IO.File.Exists(PathtoDL & "\dl2.txt") Then IO.File.Create(PathtoDL & "\dl2.txt").Dispose()
+            If Not IO.File.Exists(DataHosts) Then IO.File.Create(DataHosts).Dispose()
+            If Not IO.File.Exists(BkHosts) Then IO.File.Create(BkHosts).Dispose()
+
+
+            MsgBox("DONE, AdEvader Activated", MsgBoxStyle.Information)
 
 
         Catch ex As Exception
@@ -352,10 +387,19 @@ Public Class frmMain
             '  Dim DataHosts As String = AppDataPath & "\HOSTS"
 
             If File.Exists(BkHosts) Then
-                Process.Start("net", " stop DNSCACHE")
+
+                Dim p As New ProcessStartInfo("net", " stop DNSCACHE")
+                p.WindowStyle = ProcessWindowStyle.Hidden
+                p.CreateNoWindow = True
+                Process.Start(p)
+
                 File.Delete(HostsSys)
                 File.Copy(BkHosts, HostsSys, True)
-                Process.Start("net", " start DNSCACHE")
+
+                Dim p1 As New ProcessStartInfo("net", " start DNSCACHE")
+                p1.WindowStyle = ProcessWindowStyle.Hidden
+                p1.CreateNoWindow = True
+                Process.Start(p1)
             End If
 
             MsgBox("DONE, Restored Default HOSTS File")
@@ -367,209 +411,6 @@ Public Class frmMain
 
 #End Region
 
-#Region "Tray"
-
-    Private Sub OpenGPMAntivirusGUIToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenGPMAntivirusGUIToolStripMenuItem.Click
-        Me.Show()
-    End Sub
-
-
-    Private Sub OpenGPMAntivirusScannerGUIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenGPMAntivirusScannerGUIToolStripMenuItem.Click
-        Try
-            If My.Computer.FileSystem.FileExists(AppPath & "\GPMAV-SCANGUI.exe") Then
-
-                Shell(AppPath & "\GPMAV-SCANGUI.exe", AppWinStyle.NormalFocus)
-            Else
-
-                Dim regKey As RegistryKey
-                Dim ver As String
-                regKey = Registry.LocalMachine.OpenSubKey("Software\GPMAV", True)
-                ' regKey.SetValue("AppName", "MyRegApp")
-                ver = regKey.GetValue("Install_Dir")
-                '    If ver < 1.1 Then
-                'regKey.SetValue("Version", 1.1)
-                'End If
-                Process.Start(ver & "\GPMAV-SCANGUI.exe")
-                regKey.Close()
-
-
-            End If
-        Catch ex1 As Exception
-            Beep()
-            MsgBox("An Error has occurred! " & vbCrLf & "File not found!", vbOKOnly + vbCritical, "ERROR!")
-        End Try
-    End Sub
-
-    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
-        MsgBox("GPM Antivirus 2014" & vbCrLf & "Version 14.5" & vbCrLf & "Created by GPM", MsgBoxStyle.Information, "About: GPM Antivirus")
-    End Sub
-
-
-    Private Sub UpdateGUIVisibleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UpdateGUIVisibleToolStripMenuItem.Click
-        Try
-            If My.Computer.FileSystem.FileExists(AppPath & "\GPMAV-UPDATE-GUI.exe") Then
-
-                Shell(AppPath & "\GPMAV-UPDATE-GUI.exe", AppWinStyle.NormalFocus)
-            Else
-
-                Dim regKey As RegistryKey
-                Dim ver As String
-                regKey = Registry.LocalMachine.OpenSubKey("Software\GPMAV", True)
-                ' regKey.SetValue("AppName", "MyRegApp")
-                ver = regKey.GetValue("Install_Dir")
-                '    If ver < 1.1 Then
-                'regKey.SetValue("Version", 1.1)
-                'End If
-                Process.Start(ver & "\GPMAV-UPDATE-GUI.exe")
-                regKey.Close()
-
-
-            End If
-        Catch ex2 As Exception
-            Beep()
-            MsgBox("An Error has occurred! " & vbCrLf & "File not found!", vbOKOnly + vbCritical, "ERROR!")
-        End Try
-    End Sub
-
-    Private Sub UpdateGUIInvisibleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UpdateGUIInvisibleToolStripMenuItem.Click
-        Try
-
-  
-
-            If My.Computer.FileSystem.FileExists(AppPath & "\gpmavupdate.exe") Then
-
-
-                Dim p As New ProcessStartInfo(AppPath & "\gpmavupdate.exe", "--stdout --log=" & appp & "\logs\Autoupdatelog.log")
-                p.WindowStyle = ProcessWindowStyle.Hidden
-                p.CreateNoWindow = True
-                Process.Start(p)
-
-                'Shell(AppPath & "\gpmavupdate.exe", AppWinStyle.Hide)
-            Else
-
-                Dim regKey As RegistryKey
-                Dim ver As String
-                regKey = Registry.LocalMachine.OpenSubKey("Software\GPMAV", True)
-                ' regKey.SetValue("AppName", "MyRegApp")
-                ver = regKey.GetValue("Install_Dir")
-                '    If ver < 1.1 Then
-                'regKey.SetValue("Version", 1.1)
-                'End If
-                ' Process.Start(ver & "\gpmavupdate.exe", "--stdout --log=" & ver & "\logs\Autoupdatelog.log")
-
-
-
-                Dim p As New ProcessStartInfo(ver & "\gpmavupdate.exe", "--stdout --log=" & ver & "\logs\Autoupdatelog.log")
-                p.WindowStyle = ProcessWindowStyle.Hidden
-                p.CreateNoWindow = True
-                Process.Start(p)
-
-                regKey.Close()
-
-
-            End If
-        Catch ex3 As Exception
-            Beep()
-            MsgBox("An Error has occurred! " & vbCrLf & "File not found!", vbOKOnly + vbCritical, "ERROR!")
-        End Try
-    End Sub
-
-
-
-    Private Sub RunRealTimeForDriveCToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RTPON.Click
-        Try
-            If My.Computer.FileSystem.FileExists(AppPath & "\GPMClamAVRT.exe") Then
-
-
-                Dim p As New ProcessStartInfo(AppPath & "\GPMClamAVRT.exe")
-                p.WindowStyle = ProcessWindowStyle.Hidden
-                p.CreateNoWindow = True
-                Process.Start(p)
-
-                'Shell(AppPath & "\GPMClamAVRT.exe", AppWinStyle.NormalFocus)
-            Else
-
-                Dim regKey As RegistryKey
-                Dim ver As String
-                regKey = Registry.LocalMachine.OpenSubKey("Software\GPMAV", True)
-                ' regKey.SetValue("AppName", "MyRegApp")
-                ver = regKey.GetValue("Install_Dir")
-                '    If ver < 1.1 Then
-                'regKey.SetValue("Version", 1.1)
-                'End If
-                ' Process.Start(ver & "\GPMClamAVRT.exe")
-
-                Dim p As New ProcessStartInfo(ver & "\GPMClamAVRT.exe")
-                p.WindowStyle = ProcessWindowStyle.Hidden
-                p.CreateNoWindow = True
-                Process.Start(p)
-                regKey.Close()
-
-
-            End If
-        Catch ex6 As Exception
-            Beep()
-            MsgBox("An Error has occurred! " & vbCrLf & "File not found!", vbOKOnly + vbCritical, "ERROR!")
-        End Try
-    End Sub
-
-
-    Private Sub StopRealTimeForDriveCToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RTPOFF.Click
-        ' Kill process
-        Dim pProcess() As Process = System.Diagnostics.Process.GetProcessesByName("GPMClamAVRT")
-
-        For Each p As Process In pProcess
-            p.Kill()
-        Next
-    End Sub
-
-
-    Private Sub systray1_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles systray1.Click
-        sysstrp.Show()
-    End Sub
-    Private Sub systray1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles systray1.MouseDoubleClick
-        sysstrp.Show()
-    End Sub
-
-    Private Sub VisitNB_Click(sender As Object, e As EventArgs) Handles VisitNB.Click
-        Process.Start("http://www.gpmantivirus.noblogs.org")
-    End Sub
-
-
-
-    Private Sub DonateBTC_Click(sender As Object, e As EventArgs) Handles DonateBTC.Click
-        '  Process.Start("bitcoin: 1DxFQQXLMTCtZjeshZ3dRseSxKk5TzugSv?label=GPMAV DONATION OFFICIAL")
-        dlgDonate.ShowDialog()
-    End Sub
-
-    Private Sub DonatePPL_Click(sender As Object, e As EventArgs) Handles DonatePPL.Click
-        Try
-            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WFBYGAENP3VGY")
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
-
-
-    Private Sub VisitGIT_Click(sender As Object, e As EventArgs) Handles VisitGIT.Click
-        Try
-            Process.Start("https://github.com/R1BN")
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
-        Try
-            Me.Dispose()
-            Application.Exit()
-            End
-        Catch ex As Exception
-
-        End Try
-    End Sub
-#End Region
 
 #Region "Mem Clnr"
 
@@ -1762,7 +1603,9 @@ Public Class frmMain
 #End Region
 
 #Region "GCleaner"
-
+    Private Sub btnGCLen_Click(sender As Object, e As EventArgs) Handles btnGCLen.Click
+        tabctrl_1.SelectedTab = tabGCleaner
+    End Sub
     Private Sub btnScan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnScan.Click
         Me.lvwTemps.Items.Clear()
         Me.btnClean.Enabled = False
@@ -1773,7 +1616,7 @@ Public Class frmMain
         t.Start()
     End Sub
     Private Sub btnClean_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClean.Click
-        MessageBox.Show("Cleaning isn't done yet! I'm not focusing on cleaning until I get all the directories done!")
+        MessageBox.Show("Please wait!")
 
         Me.progressScanning.Style = ProgressBarStyle.Blocks
         Me.progressScanning.Value = 0
@@ -2125,10 +1968,6 @@ Public Class frmMain
     End Sub
 
 #End Region
-
-    Private Sub btnGCLen_Click(sender As Object, e As EventArgs) Handles btnGCLen.Click
-        tabctrl_1.SelectedTab = tabGCleaner
-    End Sub
 
 
 End Class

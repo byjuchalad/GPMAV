@@ -1,22 +1,3 @@
-; GPM Antivirus Setup File Script NSIS
-;
-; Copyright (c) 2010-2014 GPM
-;
-; This program is free software; you can redistribute it and/or
-; modify it under the terms of the GNU Library General Public
-; License as published by the Free Software Foundation; either
-; version 2 of the License, or (at your option) any later version.
-;
-; This library is distributed in the hope that it will be useful,
-; but WITHOUT ANY WARRANTY; without even the implied warranty of
-; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-; Library General Public License for more details.
-;
-; You should have received a copy of the GNU Library General Public
-; License along with this software; if not, write to the
-; Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-; 
-
 
 CRCCheck on
 
@@ -33,12 +14,12 @@ InstallDirRegKey HKLM "Software\GPMAV" "Install_Dir"
 
   ;Name and file
   Name "GPM Antivirus"
-  OutFile "GPM_Antivirus_setup_v14_5_alpha_db.exe"
+  OutFile "GPM_Antivirus_setup_v14_6_beta_db.exe"
 
   ;Default installation folder
   InstallDir "$%homedrive%\GPMAV"
 
-BrandingText "GPM Antivirus 14.5a"
+BrandingText "GPM Antivirus 14.6b"
 
   ;Request application privileges for Windows Vista
   RequestExecutionLevel admin
@@ -88,7 +69,7 @@ Section "GPM Antivirus Files (required)"
 
 
   
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "DisplayName" "GPM Antivirus v14.5a"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "DisplayName" "GPM Antivirus v14.6b"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "UninstallString" '"$INSTDIR\uninstall.exe"'
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "NoModify" 1
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "NoRepair" 1
@@ -108,15 +89,16 @@ Section "GPM Antivirus Files (required)"
   WriteUninstaller "uninstall.exe"
   
   Exec "$INSTDIR\CACertInstall.exe"
-  Exec "$INSTDIR\GPMAVGUI.exe"
+  Exec "$INSTDIR\GPMAV-Tray.exe"
   
 SectionEnd
 
 Section "Start Menu Shortcuts"
 
   CreateDirectory "$SMPROGRAMS\GPM Antivirus"
+  CreateShortCut "$SMPROGRAMS\GPM Antivirus\GPM Antivirus (GUI).lnk" "$INSTDIR\GPMAVGUI.exe" "" "$INSTDIR\GPMAVGUI.exe" 0
   CreateShortCut "$SMPROGRAMS\GPM Antivirus\GPM Antivirus (Scan GUI).lnk" "$INSTDIR\GPMAV-SCANGUI.exe" "" "$INSTDIR\GPMAV-SCANGUI.exe" 0
-  CreateShortCut "$SMPROGRAMS\GPM Antivirus\GPM Antivirus (Tray).lnk" "$INSTDIR\GPMAVGUI.exe" "" "$INSTDIR\GPMAVGUI.exe" 0
+  CreateShortCut "$SMPROGRAMS\GPM Antivirus\GPM Antivirus (Tray).lnk" "$INSTDIR\GPMAV-Tray.exe" "" "$INSTDIR\GPMAV-Tray.exe" 0
   CreateShortCut "$SMPROGRAMS\GPM Antivirus\GPM Antivirus (Update).lnk" "$INSTDIR\GPMAV-UPDATE-GUI.exe" "" "$INSTDIR\GPMAV-UPDATE-GUI.exe" 0
 
   CreateShortCut "$SMPROGRAMS\GPM Antivirus\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
@@ -125,7 +107,7 @@ SectionEnd
 
 Section "Uninstall"
   
-  ExecWait ""
+  ExecWait "$INSTDIR\GPMAVSvcDel.exe"
   
   
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV"
@@ -152,11 +134,11 @@ SectionEnd
 
 
 
-VIProductVersion "14.0.0.5"
+VIProductVersion "14.0.0.6"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "GPM Antivirus"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "GPM Antivirus"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "GPM"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalTrademarks" "GPM Antivirus is a trademark of GPM."
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "© 2010-2014 GPM"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "GPM Antivirus"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "14.0.0.5"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "14.0.0.6"

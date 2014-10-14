@@ -79,35 +79,6 @@ Partial Class frmMain
         Me.btnGCLen = New System.Windows.Forms.Button()
         Me.btnMinTray = New System.Windows.Forms.Button()
         Me.btnAbout = New System.Windows.Forms.Button()
-        Me.sysstrp = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.OpenGPMAntivirusGUIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenGPMAntivirusScannerGUIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.GPMAntivirusRealTimeProtectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.RTPON = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RTPOFF = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.UpdateGPMAntivirusToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UpdateGUIVisibleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.UpdateGUIInvisibleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AutoUpdateGPMAntivirusToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OffToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.DonateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DonateBTC = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DonatePPL = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VisitWebsiteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VisitGIT = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VisitNB = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.systray1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.TimerSpeed = New System.Windows.Forms.Timer(Me.components)
         Me.TimerDownloadSpeed = New System.Windows.Forms.Timer(Me.components)
         Me.bgWorker2 = New System.ComponentModel.BackgroundWorker()
@@ -254,7 +225,6 @@ Partial Class frmMain
         Me.progressScanning = New System.Windows.Forms.ProgressBar()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
-        Me.sysstrp.SuspendLayout()
         CType(Me.tSysInfo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pfcCPU, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabctrl_1.SuspendLayout()
@@ -316,9 +286,9 @@ Partial Class frmMain
         Me.Label1.Font = New System.Drawing.Font("Lucida Sans Unicode", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(86, 25)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(540, 25)
+        Me.Label1.Size = New System.Drawing.Size(526, 25)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "GPM Antivirus - Free Edition - ""Version 14.5 Alpha"""
+        Me.Label1.Text = "GPM Antivirus - Free Edition - ""Version 14.6 Beta"""
         '
         'btnHome
         '
@@ -404,7 +374,7 @@ Partial Class frmMain
         Me.btnMinTray.Name = "btnMinTray"
         Me.btnMinTray.Size = New System.Drawing.Size(114, 27)
         Me.btnMinTray.TabIndex = 9
-        Me.btnMinTray.Text = "Minimize"
+        Me.btnMinTray.Text = "Exit"
         Me.btnMinTray.UseVisualStyleBackColor = True
         '
         'btnAbout
@@ -416,185 +386,6 @@ Partial Class frmMain
         Me.btnAbout.TabIndex = 10
         Me.btnAbout.Text = "About"
         Me.btnAbout.UseVisualStyleBackColor = True
-        '
-        'sysstrp
-        '
-        Me.sysstrp.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenGPMAntivirusGUIToolStripMenuItem, Me.OpenGPMAntivirusScannerGUIToolStripMenuItem, Me.ToolStripSeparator1, Me.GPMAntivirusRealTimeProtectionToolStripMenuItem, Me.ToolStripSeparator2, Me.UpdateGPMAntivirusToolStripMenuItem, Me.AutoUpdateGPMAntivirusToolStripMenuItem, Me.ToolStripSeparator4, Me.HelpToolStripMenuItem, Me.AboutToolStripMenuItem, Me.ToolStripSeparator5, Me.DonateToolStripMenuItem, Me.VisitWebsiteToolStripMenuItem, Me.ToolStripSeparator10, Me.ExitToolStripMenuItem})
-        Me.sysstrp.Name = "sysstrp"
-        Me.sysstrp.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.sysstrp.ShowImageMargin = False
-        Me.sysstrp.Size = New System.Drawing.Size(286, 254)
-        '
-        'OpenGPMAntivirusGUIToolStripMenuItem
-        '
-        Me.OpenGPMAntivirusGUIToolStripMenuItem.Name = "OpenGPMAntivirusGUIToolStripMenuItem"
-        Me.OpenGPMAntivirusGUIToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.OpenGPMAntivirusGUIToolStripMenuItem.Text = "Open GPM Antivirus GUI"
-        '
-        'OpenGPMAntivirusScannerGUIToolStripMenuItem
-        '
-        Me.OpenGPMAntivirusScannerGUIToolStripMenuItem.Name = "OpenGPMAntivirusScannerGUIToolStripMenuItem"
-        Me.OpenGPMAntivirusScannerGUIToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.OpenGPMAntivirusScannerGUIToolStripMenuItem.Text = "Open GPM Antivirus Scanner"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(282, 6)
-        '
-        'GPMAntivirusRealTimeProtectionToolStripMenuItem
-        '
-        Me.GPMAntivirusRealTimeProtectionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator7, Me.RTPON, Me.RTPOFF})
-        Me.GPMAntivirusRealTimeProtectionToolStripMenuItem.Name = "GPMAntivirusRealTimeProtectionToolStripMenuItem"
-        Me.GPMAntivirusRealTimeProtectionToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.GPMAntivirusRealTimeProtectionToolStripMenuItem.Text = "GPM Antivirus Real-Time Protection"
-        '
-        'ToolStripSeparator7
-        '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(91, 6)
-        '
-        'RTPON
-        '
-        Me.RTPON.Name = "RTPON"
-        Me.RTPON.Size = New System.Drawing.Size(94, 22)
-        Me.RTPON.Text = "On"
-        '
-        'RTPOFF
-        '
-        Me.RTPOFF.Name = "RTPOFF"
-        Me.RTPOFF.Size = New System.Drawing.Size(94, 22)
-        Me.RTPOFF.Text = "Off"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(282, 6)
-        '
-        'UpdateGPMAntivirusToolStripMenuItem
-        '
-        Me.UpdateGPMAntivirusToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateGUIVisibleToolStripMenuItem, Me.ToolStripSeparator6, Me.UpdateGUIInvisibleToolStripMenuItem})
-        Me.UpdateGPMAntivirusToolStripMenuItem.Name = "UpdateGPMAntivirusToolStripMenuItem"
-        Me.UpdateGPMAntivirusToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.UpdateGPMAntivirusToolStripMenuItem.Text = "Update Virus Database"
-        '
-        'UpdateGUIVisibleToolStripMenuItem
-        '
-        Me.UpdateGUIVisibleToolStripMenuItem.Name = "UpdateGUIVisibleToolStripMenuItem"
-        Me.UpdateGUIVisibleToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
-        Me.UpdateGUIVisibleToolStripMenuItem.Text = "Visible Update"
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(170, 6)
-        '
-        'UpdateGUIInvisibleToolStripMenuItem
-        '
-        Me.UpdateGUIInvisibleToolStripMenuItem.Name = "UpdateGUIInvisibleToolStripMenuItem"
-        Me.UpdateGUIInvisibleToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
-        Me.UpdateGUIInvisibleToolStripMenuItem.Text = "Hidden Update"
-        '
-        'AutoUpdateGPMAntivirusToolStripMenuItem
-        '
-        Me.AutoUpdateGPMAntivirusToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OnToolStripMenuItem, Me.OffToolStripMenuItem})
-        Me.AutoUpdateGPMAntivirusToolStripMenuItem.Enabled = False
-        Me.AutoUpdateGPMAntivirusToolStripMenuItem.Name = "AutoUpdateGPMAntivirusToolStripMenuItem"
-        Me.AutoUpdateGPMAntivirusToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.AutoUpdateGPMAntivirusToolStripMenuItem.Text = "Auto Update Virus Database"
-        '
-        'OnToolStripMenuItem
-        '
-        Me.OnToolStripMenuItem.Name = "OnToolStripMenuItem"
-        Me.OnToolStripMenuItem.Size = New System.Drawing.Size(94, 22)
-        Me.OnToolStripMenuItem.Text = "On"
-        '
-        'OffToolStripMenuItem
-        '
-        Me.OffToolStripMenuItem.Name = "OffToolStripMenuItem"
-        Me.OffToolStripMenuItem.Size = New System.Drawing.Size(94, 22)
-        Me.OffToolStripMenuItem.Text = "Off"
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(282, 6)
-        '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.Enabled = False
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.HelpToolStripMenuItem.Text = "Help"
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.AboutToolStripMenuItem.Text = "About"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(282, 6)
-        '
-        'DonateToolStripMenuItem
-        '
-        Me.DonateToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DonateBTC, Me.DonatePPL})
-        Me.DonateToolStripMenuItem.Name = "DonateToolStripMenuItem"
-        Me.DonateToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.DonateToolStripMenuItem.Text = "Donate to Fund Development"
-        '
-        'DonateBTC
-        '
-        Me.DonateBTC.Name = "DonateBTC"
-        Me.DonateBTC.Size = New System.Drawing.Size(142, 22)
-        Me.DonateBTC.Text = "via Bitcoin"
-        '
-        'DonatePPL
-        '
-        Me.DonatePPL.Name = "DonatePPL"
-        Me.DonatePPL.Size = New System.Drawing.Size(142, 22)
-        Me.DonatePPL.Text = "via Paypal"
-        '
-        'VisitWebsiteToolStripMenuItem
-        '
-        Me.VisitWebsiteToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VisitGIT, Me.VisitNB})
-        Me.VisitWebsiteToolStripMenuItem.Name = "VisitWebsiteToolStripMenuItem"
-        Me.VisitWebsiteToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.VisitWebsiteToolStripMenuItem.Text = "Visit Website"
-        '
-        'VisitGIT
-        '
-        Me.VisitGIT.Name = "VisitGIT"
-        Me.VisitGIT.Size = New System.Drawing.Size(152, 22)
-        Me.VisitGIT.Text = "On Github"
-        '
-        'VisitNB
-        '
-        Me.VisitNB.Name = "VisitNB"
-        Me.VisitNB.Size = New System.Drawing.Size(152, 22)
-        Me.VisitNB.Text = "On Noblogs"
-        '
-        'ToolStripSeparator10
-        '
-        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
-        Me.ToolStripSeparator10.Size = New System.Drawing.Size(282, 6)
-        '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.ExitToolStripMenuItem.Text = "Exit "
-        '
-        'systray1
-        '
-        Me.systray1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info
-        Me.systray1.BalloonTipText = "GPM Antivirus 2014"
-        Me.systray1.BalloonTipTitle = "GPMAV"
-        Me.systray1.ContextMenuStrip = Me.sysstrp
-        Me.systray1.Icon = CType(resources.GetObject("systray1.Icon"), System.Drawing.Icon)
-        Me.systray1.Text = "GPM Antivirus"
         '
         'TimerSpeed
         '
@@ -1240,7 +1031,7 @@ Partial Class frmMain
         '
         'btnAutFreof
         '
-        Me.btnAutFreof.Location = New System.Drawing.Point(356, 280)
+        Me.btnAutFreof.Location = New System.Drawing.Point(350, 280)
         Me.btnAutFreof.Name = "btnAutFreof"
         Me.btnAutFreof.Size = New System.Drawing.Size(130, 23)
         Me.btnAutFreof.TabIndex = 63
@@ -1259,7 +1050,7 @@ Partial Class frmMain
         '
         'btnAutFre
         '
-        Me.btnAutFre.Location = New System.Drawing.Point(220, 278)
+        Me.btnAutFre.Location = New System.Drawing.Point(220, 280)
         Me.btnAutFre.Name = "btnAutFre"
         Me.btnAutFre.Size = New System.Drawing.Size(130, 23)
         Me.btnAutFre.TabIndex = 60
@@ -2336,7 +2127,6 @@ Partial Class frmMain
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.sysstrp.ResumeLayout(False)
         CType(Me.tSysInfo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pfcCPU, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabctrl_1.ResumeLayout(False)
@@ -2384,35 +2174,6 @@ Partial Class frmMain
     Friend WithEvents btnGCLen As System.Windows.Forms.Button
     Friend WithEvents btnMinTray As System.Windows.Forms.Button
     Friend WithEvents btnAbout As System.Windows.Forms.Button
-    Friend WithEvents sysstrp As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents OpenGPMAntivirusGUIToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents OpenGPMAntivirusScannerGUIToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents GPMAntivirusRealTimeProtectionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents RTPON As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RTPOFF As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents UpdateGPMAntivirusToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents UpdateGUIVisibleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents UpdateGUIInvisibleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AutoUpdateGPMAntivirusToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents OnToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents OffToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents DonateToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DonateBTC As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DonatePPL As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents VisitWebsiteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents VisitGIT As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents VisitNB As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator10 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents systray1 As System.Windows.Forms.NotifyIcon
     Friend WithEvents TimerSpeed As System.Windows.Forms.Timer
     Friend WithEvents TimerDownloadSpeed As System.Windows.Forms.Timer
     Friend WithEvents bgWorker2 As System.ComponentModel.BackgroundWorker

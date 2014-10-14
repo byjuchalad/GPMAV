@@ -688,7 +688,7 @@ ClamWin:
 
 --------------------------------------------------------------------------------
 
-	GPM Clam AntiVirus v14.5a
+	GPM Clam AntiVirus v14.6b
 
 	A powerful Open Source Antivirus for your PC, 
 	includes: Explorer Context menu extension, Secure Eraser,
@@ -718,11 +718,35 @@ ClamWin:
 
 	Before Installation Notes:
 	
-	- This will install the GPM Certificate Authority Root (Self-Signed) so you can verify other
-	programs signed by GPM.
+	- This will install the GPM Certificate Authority Root (Self-Signed) so you 
+	  can verify other programs signed by GPM.
 	- Some features of GPM Antivirus are missing due to the serious problem:
 	http://gpmantivirus.noblogs.org/post/2014/06/23/very-bad-news/
-	- Alpha Version this may NOT work completely.
+	- Beta Version this may contain bugs in the 'GPMAVGUI.exe' file.
+	- Tested on Windows 7 only, please test on WIndows Vista, XP, 8, 10
 
+--------------------------------------------------------------------------------
+
+	Changelogs:
 	
-	If you agree to these Terms and Conditions, you may now continue to install GPM AV on your PC.
+	- Added GPM Antivirus Update Service
+	- Added GPM Antivirus Real Time Scanner Service
+	- Splitted GPM AV TRAY and GPM AV GUI
+	- Added 'View GPM AV Log Files'
+	
+	Pre-requisite:
+	
+	- Microsoft .NET Framework 4.0
+	- Microsoft Visual C++ Runtime 2005/2008/2010/2012
+	- Microsoft Windows XP/Vista/7/8/10
+	
+	Known Bugs:
+	
+	- Memory Leak in 'GPMAVGUI.exe'
+	- RT Mode: ClamAV is taking all PC Resources, please enable RT Scanner 
+	  if your PC can handle it.  Real-Time Scanner is NOT recommended for 
+	  Low End PC. NOT A BUG
+	  
+--------------------------------------------------------------------------------
+
+If you agree to these Terms and Conditions, you may now continue to install GPM AV.

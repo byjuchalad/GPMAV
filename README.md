@@ -1,7 +1,7 @@
 	GPMAV
 	=====================================================================
 	
-	GPM Clam AntiVirus v14.5a
+	GPM Clam AntiVirus v14.6b
 
 	A powerful Open Source Antivirus for your PC, 
 	includes: Explorer Context menu extension, Secure Eraser,

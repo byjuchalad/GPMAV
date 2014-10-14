@@ -10,17 +10,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("GPM Antivirus")> 
-<Assembly: AssemblyDescription("GPM Antivirus")> 
+<Assembly: AssemblyTitle("GPMAV_Tray")> 
+<Assembly: AssemblyDescription("GPM Antivirus Tray")> 
 <Assembly: AssemblyCompany("GPM")> 
-<Assembly: AssemblyProduct("GPM Antivirus")> 
+<Assembly: AssemblyProduct("GPMAV_Tray")> 
 <Assembly: AssemblyCopyright("Copyright ©  2014 GPM")> 
-<Assembly: AssemblyTrademark("GPM Antivirus is a trademark of GPM.")> 
+<Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("0c5d429b-229e-440c-b491-5e34cd0a579c")> 
+<Assembly: Guid("59d153ee-82c6-4dcd-8bd9-7936ec125c06")> 
 
 ' Version information for an assembly consists of the following four values:
 '
