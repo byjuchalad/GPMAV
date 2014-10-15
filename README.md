@@ -8,7 +8,7 @@
 	Tray Menu Mode, Simplified/Advanced GUI, Powerful ClamAV
 	Scanner, Real-Time Virus Scanner, Secure WebBrowser, 
 	Registry Tools, GCleaner, Memory Cleaner, Auto-Update
-	Process, AdEvader, Memory Cleaner, USB Antivirus
+	Process Explorer, AdEvader, USB Antivirus
 	and uses the open source Clam AntiVirus engine.
 	
 	Visit: http://gpmantivirus.noblogs.org/
