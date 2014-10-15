@@ -60,7 +60,7 @@
 	
 	=====================================================================
 	EXTRA NOTES:
-	- ALPHA Version: May not work at all.
+	- BETA Version: May contain bugs.
 	- LICENSE: GPL v3
 	
 	=====================================================================
