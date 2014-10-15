@@ -84,7 +84,7 @@ Section "GPM Antivirus Files (required)"
   WriteRegStr HKEY_CLASSES_ROOT "CLSID\{e76d8ce0-8944-4fed-b363-c2df08724673}\InProcServer32" "" "$INSTDIR\ExpShell.dll"
   WriteRegStr HKEY_CLASSES_ROOT "*\shellex\ContextMenuHandlers\GPMAV" "" "{e76d8ce0-8944-4fed-b363-c2df08724673}"
   WriteRegStr HKEY_CLASSES_ROOT "Folder\shellex\ContextMenuHandlers\GPMAV" "" "{e76d8ce0-8944-4fed-b363-c2df08724673}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Run" "GPMAVGUI" "$INSTDIR\GPMAVGUI.exe"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Run" "GPMAVTray" "$INSTDIR\GPMAV-Tray.exe"
    
   WriteUninstaller "uninstall.exe"
   
