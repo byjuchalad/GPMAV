@@ -40,8 +40,7 @@ Partial Class frmTray
         Me.OnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OffToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShowReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.DonateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DonateBTC = New System.Windows.Forms.ToolStripMenuItem()
@@ -49,20 +48,23 @@ Partial Class frmTray
         Me.VisitWebsiteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VisitGIT = New System.Windows.Forms.ToolStripMenuItem()
         Me.VisitNB = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.systray1 = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.ShowReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExtraTooldToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProcessExplorerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.sysstrp.SuspendLayout()
         Me.SuspendLayout()
         '
         'sysstrp
         '
-        Me.sysstrp.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenGPMAntivirusGUIToolStripMenuItem, Me.OpenGPMAntivirusScannerGUIToolStripMenuItem, Me.ToolStripSeparator1, Me.GPMAntivirusRealTimeProtectionToolStripMenuItem, Me.ToolStripSeparator2, Me.UpdateGPMAntivirusToolStripMenuItem, Me.AutoUpdateGPMAntivirusToolStripMenuItem, Me.ToolStripSeparator4, Me.ShowReportsToolStripMenuItem, Me.ToolStripSeparator5, Me.DonateToolStripMenuItem, Me.VisitWebsiteToolStripMenuItem, Me.HelpToolStripMenuItem, Me.AboutToolStripMenuItem, Me.ToolStripSeparator10, Me.ExitToolStripMenuItem})
+        Me.sysstrp.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenGPMAntivirusGUIToolStripMenuItem, Me.OpenGPMAntivirusScannerGUIToolStripMenuItem, Me.ToolStripSeparator1, Me.GPMAntivirusRealTimeProtectionToolStripMenuItem, Me.ToolStripSeparator2, Me.UpdateGPMAntivirusToolStripMenuItem, Me.AutoUpdateGPMAntivirusToolStripMenuItem, Me.ToolStripSeparator4, Me.ExtraTooldToolStripMenuItem, Me.ShowReportsToolStripMenuItem, Me.ToolStripSeparator5, Me.DonateToolStripMenuItem, Me.VisitWebsiteToolStripMenuItem, Me.HelpToolStripMenuItem, Me.AboutToolStripMenuItem, Me.ToolStripSeparator10, Me.ExitToolStripMenuItem})
         Me.sysstrp.Name = "sysstrp"
         Me.sysstrp.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.sysstrp.ShowImageMargin = False
-        Me.sysstrp.Size = New System.Drawing.Size(286, 298)
+        Me.sysstrp.Size = New System.Drawing.Size(286, 320)
         '
         'OpenGPMAntivirusGUIToolStripMenuItem
         '
@@ -91,13 +93,13 @@ Partial Class frmTray
         'RTPON
         '
         Me.RTPON.Name = "RTPON"
-        Me.RTPON.Size = New System.Drawing.Size(152, 22)
+        Me.RTPON.Size = New System.Drawing.Size(94, 22)
         Me.RTPON.Text = "On"
         '
         'RTPOFF
         '
         Me.RTPOFF.Name = "RTPOFF"
-        Me.RTPOFF.Size = New System.Drawing.Size(152, 22)
+        Me.RTPOFF.Size = New System.Drawing.Size(94, 22)
         Me.RTPOFF.Text = "Off"
         '
         'ToolStripSeparator2
@@ -139,13 +141,13 @@ Partial Class frmTray
         'OnToolStripMenuItem
         '
         Me.OnToolStripMenuItem.Name = "OnToolStripMenuItem"
-        Me.OnToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OnToolStripMenuItem.Size = New System.Drawing.Size(94, 22)
         Me.OnToolStripMenuItem.Text = "On"
         '
         'OffToolStripMenuItem
         '
         Me.OffToolStripMenuItem.Name = "OffToolStripMenuItem"
-        Me.OffToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OffToolStripMenuItem.Size = New System.Drawing.Size(94, 22)
         Me.OffToolStripMenuItem.Text = "Off"
         '
         'ToolStripSeparator4
@@ -153,17 +155,11 @@ Partial Class frmTray
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         Me.ToolStripSeparator4.Size = New System.Drawing.Size(282, 6)
         '
-        'HelpToolStripMenuItem
+        'ShowReportsToolStripMenuItem
         '
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.HelpToolStripMenuItem.Text = "Help"
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.AboutToolStripMenuItem.Text = "About"
+        Me.ShowReportsToolStripMenuItem.Name = "ShowReportsToolStripMenuItem"
+        Me.ShowReportsToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ShowReportsToolStripMenuItem.Text = "View Logs"
         '
         'ToolStripSeparator5
         '
@@ -180,13 +176,13 @@ Partial Class frmTray
         'DonateBTC
         '
         Me.DonateBTC.Name = "DonateBTC"
-        Me.DonateBTC.Size = New System.Drawing.Size(152, 22)
+        Me.DonateBTC.Size = New System.Drawing.Size(142, 22)
         Me.DonateBTC.Text = "via Bitcoin"
         '
         'DonatePPL
         '
         Me.DonatePPL.Name = "DonatePPL"
-        Me.DonatePPL.Size = New System.Drawing.Size(152, 22)
+        Me.DonatePPL.Size = New System.Drawing.Size(142, 22)
         Me.DonatePPL.Text = "via Paypal"
         '
         'VisitWebsiteToolStripMenuItem
@@ -208,6 +204,18 @@ Partial Class frmTray
         Me.VisitNB.Size = New System.Drawing.Size(152, 22)
         Me.VisitNB.Text = "On Noblogs"
         '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.HelpToolStripMenuItem.Text = "Help"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.AboutToolStripMenuItem.Text = "About"
+        '
         'ToolStripSeparator10
         '
         Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
@@ -228,11 +236,18 @@ Partial Class frmTray
         Me.systray1.Icon = CType(resources.GetObject("systray1.Icon"), System.Drawing.Icon)
         Me.systray1.Text = "GPM Antivirus"
         '
-        'ShowReportsToolStripMenuItem
+        'ExtraTooldToolStripMenuItem
         '
-        Me.ShowReportsToolStripMenuItem.Name = "ShowReportsToolStripMenuItem"
-        Me.ShowReportsToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.ShowReportsToolStripMenuItem.Text = "View Logs"
+        Me.ExtraTooldToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProcessExplorerToolStripMenuItem})
+        Me.ExtraTooldToolStripMenuItem.Name = "ExtraTooldToolStripMenuItem"
+        Me.ExtraTooldToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ExtraTooldToolStripMenuItem.Text = "Extra Tools"
+        '
+        'ProcessExplorerToolStripMenuItem
+        '
+        Me.ProcessExplorerToolStripMenuItem.Name = "ProcessExplorerToolStripMenuItem"
+        Me.ProcessExplorerToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
+        Me.ProcessExplorerToolStripMenuItem.Text = "Process Explorer"
         '
         'frmTray
         '
@@ -280,5 +295,7 @@ Partial Class frmTray
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents systray1 As System.Windows.Forms.NotifyIcon
     Friend WithEvents ShowReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ExtraTooldToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProcessExplorerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

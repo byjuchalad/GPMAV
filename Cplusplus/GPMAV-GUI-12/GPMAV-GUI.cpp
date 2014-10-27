@@ -37,7 +37,7 @@
 using namespace std;
 
 
-#define INIFILE ".\\GPMAV-Scan.ini"
+#define INIFILE  ".\\GPMAV-Scan.ini"
 
 HWND MainDlg;
 BOOL isScanning = FALSE;
@@ -219,31 +219,31 @@ typedef struct _Option
 static Option options[] =
 {
 	
-    {"--recursive",             IDC_RECURSE         },
-    { "--remove",       IDC_RADIO1          },
-    { "-i",             IDC_ONLYINFECTED    },
+    { "--recursive",    IDC_RECURSE					},
+    { "--remove",       IDC_RADIO1					},
+    { "-i",             IDC_ONLYINFECTED			},
 
-    { "--no-summary ",      IDC_NOSUMMARY          },
-    { "--bell",        IDC_BEEP            },
-	{ " ",        IDC_REPORT            },
-	{ "--datatabase=""""./database""",        IDC_db            },
-	{ "--quiet",        IDC_QUIET            },
-	{ "--log=""""./logs/GPMCNScan.log""",  IDC_LOG            },
-    { "--debug",      IDC_DEBUG          },
-    { "--move=""""./quarantine""",     IDC_RADIO2          },
-    { "--tempdir=""""./temp""",IDC_TEMP      }, //tempdir(),   IDC_TEMP      },
-	{ "--verbose", IDC_EXVERBOSE },
-	{"--leave-temps=yes", IDC_EXDONOTREMTEMP },
-	{"--official-db-only=yes", IDC_LOADONLYODB },
-	{"--detect-pua=yes", IDC_DETECTPUA },
-	{"--detect-broken=yes", IDC_DETECTBROKENEXE },
-	{"--block-encrypted=yes", IDC_BLOCKENCARCH },
-	{"--max-filesize=200M", IDC_DONOTSCAN150 },
-	{"--scan-mail=yes", IDC_SCANMAIL },
-	{"--algorithmic-detection=yes", IDC_USEALGO},
-	{"--max-recursion=50", IDC_MAXRECUR },
-	{"--max-files=500", IDC_MAXFILES},
-	{"--max-scansize=150M", IDC_MAXFILESIZE},
+    { "--no-summary ",  IDC_NOSUMMARY				},
+    { "--bell",			IDC_BEEP					},
+	{ " ",				IDC_REPORT					},
+	{ "--database=""""./database""",        IDC_db  },
+	{ "--quiet",        IDC_QUIET					},
+	{ "--log=""""./logs/GPMCNScan.log""",  IDC_LOG  },
+    { "--debug",		 IDC_DEBUG					},
+    { "--move=""""./quarantine""",     IDC_RADIO2   },
+    { "--tempdir=""""./temp""",		   IDC_TEMP		}, //tempdir(),   IDC_TEMP      },
+	{ "--verbose", IDC_EXVERBOSE					},
+	{"--leave-temps=yes", IDC_EXDONOTREMTEMP		},
+	{"--official-db-only=yes", IDC_LOADONLYODB		},
+	{"--detect-pua=yes", IDC_DETECTPUA				},
+	{"--detect-broken=yes", IDC_DETECTBROKENEXE		},
+	{"--block-encrypted=yes", IDC_BLOCKENCARCH		},
+	{"--max-filesize=200M", IDC_DONOTSCAN150		},
+	{"--scan-mail=yes", IDC_SCANMAIL				},
+	{"--algorithmic-detection=yes", IDC_USEALGO		},
+	{"--max-recursion=50", IDC_MAXRECUR				},
+	{"--max-files=500", IDC_MAXFILES				},
+	{"--max-scansize=150M", IDC_MAXFILESIZE			},
 
     { NULL, 0 }
 	

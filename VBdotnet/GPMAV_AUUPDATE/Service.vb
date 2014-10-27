@@ -64,12 +64,12 @@ Public Class Service : Inherits ServiceBase
             ' Start to raise the Elapsed event again.
             ' tmrMain.Start()
             If My.Computer.FileSystem.FileExists(strHomeGPMDrv & "\gpmavupdate.exe") Then
-                Dim p As New ProcessStartInfo(strHomeGPMDrv & "\gpmavupdate.exe", "--stdout --log=" & strHomeGPMDrv & "\logs\Autoupdatelog.log")
+                Dim p As New ProcessStartInfo(strHomeGPMDrv & "\gpmavupdate.exe", "--stdout --config-file=" & strHomeGPMDrv & "\gpmavupdate.conf --log=" & strHomeGPMDrv & "\logs\Autoupdatelog.log")
                 p.WindowStyle = ProcessWindowStyle.Hidden
                 p.CreateNoWindow = True
                 Process.Start(p)
             Else
-                Dim p As New ProcessStartInfo(appp & "\gpmavupdate.exe", "--stdout --log=" & appp & "\logs\Autoupdatelog.log")
+                Dim p As New ProcessStartInfo(appp & "\gpmavupdate.exe", "--stdout --config-file=" & appp & "\gpmavupdate.conf --log=" & appp & "\logs\Autoupdatelog.log")
                 p.WindowStyle = ProcessWindowStyle.Hidden
                 p.CreateNoWindow = True
                 Process.Start(p)

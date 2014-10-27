@@ -23,24 +23,12 @@ Imports System.Management
 
 Module modMain
 
-    Public Sub InstallService(ByVal exeFilename As String)
-        Try
-            Dim strHomeGPMDrv As String = Environ("homedrive") & "\GPMAV"
-            Dim commandLineOptions() As String = New String() {"/LogFile=" & strHomeGPMDrv & "\Logs\Autoupdatelog.log"}
-            Dim installer As System.Configuration.Install.AssemblyInstaller = New System.Configuration.Install.AssemblyInstaller(exeFilename, commandLineOptions)
-            installer.UseNewContext = True
-            installer.Install(Nothing)
-            installer.Commit(Nothing)
-        Catch ex1 As Exception
-            Beep()
-        End Try
-    End Sub
 
 
     Public Sub UninstallService(ByVal exeFilename As String)
         Try
-            Dim strHomeGPMDrv As String = Environ("homedrive") & "\GPMAV"
-            Dim commandLineOptions() As String = New String() {"/LogFile=" & strHomeGPMDrv & "\Logs\Autoupdatelog.log"}
+            Dim strTemp As String = Environ("temp")
+            Dim commandLineOptions() As String = New String() {"/LogFile=" & strTemp & "\GPMAVSvcUninst.log"}
             Dim installer As System.Configuration.Install.AssemblyInstaller = New System.Configuration.Install.AssemblyInstaller(exeFilename, commandLineOptions)
             installer.UseNewContext = True
             installer.Uninstall(Nothing)
@@ -55,6 +43,7 @@ Module modMain
             Dim strHomeGPMDrv As String = Environ("homedrive") & "\GPMAV"
             UninstallService(strHomeGPMDrv & "\GPMClamAVRTSvc.exe")
             UninstallService(strHomeGPMDrv & "\GPMAVAuSvc.exe")
+            UninstallService(strHomeGPMDrv & "\GPMAVQuaSvc.exe")
         Catch ex As Exception
 
         End Try

@@ -75,7 +75,7 @@ Partial Class frmMain
         Me.btnMemCleaner = New System.Windows.Forms.Button()
         Me.btnProcExplr = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.btnQuar = New System.Windows.Forms.Button()
         Me.btnGCLen = New System.Windows.Forms.Button()
         Me.btnMinTray = New System.Windows.Forms.Button()
         Me.btnAbout = New System.Windows.Forms.Button()
@@ -223,6 +223,16 @@ Partial Class frmMain
         Me.btnClean = New System.Windows.Forms.Button()
         Me.btnScan = New System.Windows.Forms.Button()
         Me.progressScanning = New System.Windows.Forms.ProgressBar()
+        Me.tabQuarantine = New System.Windows.Forms.TabPage()
+        Me.btnDelAllQua = New System.Windows.Forms.Button()
+        Me.btnCopyAllEncQua = New System.Windows.Forms.Button()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.lstEncQua = New System.Windows.Forms.ListBox()
+        Me.btnDelQua = New System.Windows.Forms.Button()
+        Me.btnDecQua = New System.Windows.Forms.Button()
+        Me.btnRefreshQua = New System.Windows.Forms.Button()
+        Me.dlgSaveQua = New System.Windows.Forms.SaveFileDialog()
+        Me.dlgFldrBrowsQua = New System.Windows.Forms.FolderBrowserDialog()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.tSysInfo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -246,6 +256,7 @@ Partial Class frmMain
         Me.tcLocations.SuspendLayout()
         Me.pgBrowsers.SuspendLayout()
         Me.pgUserSystem.SuspendLayout()
+        Me.tabQuarantine.SuspendLayout()
         Me.SuspendLayout()
         '
         'PictureBox1
@@ -264,9 +275,9 @@ Partial Class frmMain
         Me.Panel1.Controls.Add(Me.LinkLabel1)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Location = New System.Drawing.Point(1, 2)
+        Me.Panel1.Location = New System.Drawing.Point(1, -1)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(723, 80)
+        Me.Panel1.Size = New System.Drawing.Size(730, 83)
         Me.Panel1.TabIndex = 0
         '
         'LinkLabel1
@@ -288,7 +299,7 @@ Partial Class frmMain
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(526, 25)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "GPM Antivirus - Free Edition - ""Version 14.6 Beta"""
+        Me.Label1.Text = "GPM Antivirus - Free Edition - ""Version 14.7 Beta"""
         '
         'btnHome
         '
@@ -331,7 +342,6 @@ Partial Class frmMain
         '
         'btnProcExplr
         '
-        Me.btnProcExplr.Enabled = False
         Me.btnProcExplr.Location = New System.Drawing.Point(1, 220)
         Me.btnProcExplr.Name = "btnProcExplr"
         Me.btnProcExplr.Size = New System.Drawing.Size(114, 27)
@@ -349,15 +359,14 @@ Partial Class frmMain
         Me.Button6.Text = "Secure Eraser"
         Me.Button6.UseVisualStyleBackColor = True
         '
-        'Button7
+        'btnQuar
         '
-        Me.Button7.Enabled = False
-        Me.Button7.Location = New System.Drawing.Point(1, 286)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(114, 27)
-        Me.Button7.TabIndex = 7
-        Me.Button7.Text = "Quarantine"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.btnQuar.Location = New System.Drawing.Point(1, 286)
+        Me.btnQuar.Name = "btnQuar"
+        Me.btnQuar.Size = New System.Drawing.Size(114, 27)
+        Me.btnQuar.TabIndex = 7
+        Me.btnQuar.Text = "Quarantine"
+        Me.btnQuar.UseVisualStyleBackColor = True
         '
         'btnGCLen
         '
@@ -456,6 +465,7 @@ Partial Class frmMain
         Me.tabctrl_1.Controls.Add(Me.tabRegTool)
         Me.tabctrl_1.Controls.Add(Me.tabAdEvader)
         Me.tabctrl_1.Controls.Add(Me.tabGCleaner)
+        Me.tabctrl_1.Controls.Add(Me.tabQuarantine)
         Me.tabctrl_1.Location = New System.Drawing.Point(121, 88)
         Me.tabctrl_1.Name = "tabctrl_1"
         Me.tabctrl_1.SelectedIndex = 0
@@ -2101,6 +2111,91 @@ Partial Class frmMain
         Me.progressScanning.Step = 1
         Me.progressScanning.TabIndex = 1
         '
+        'tabQuarantine
+        '
+        Me.tabQuarantine.Controls.Add(Me.btnDelAllQua)
+        Me.tabQuarantine.Controls.Add(Me.btnCopyAllEncQua)
+        Me.tabQuarantine.Controls.Add(Me.Label25)
+        Me.tabQuarantine.Controls.Add(Me.lstEncQua)
+        Me.tabQuarantine.Controls.Add(Me.btnDelQua)
+        Me.tabQuarantine.Controls.Add(Me.btnDecQua)
+        Me.tabQuarantine.Controls.Add(Me.btnRefreshQua)
+        Me.tabQuarantine.Location = New System.Drawing.Point(4, 24)
+        Me.tabQuarantine.Name = "tabQuarantine"
+        Me.tabQuarantine.Size = New System.Drawing.Size(595, 312)
+        Me.tabQuarantine.TabIndex = 4
+        Me.tabQuarantine.Text = "Quarantine"
+        Me.tabQuarantine.UseVisualStyleBackColor = True
+        '
+        'btnDelAllQua
+        '
+        Me.btnDelAllQua.Location = New System.Drawing.Point(505, 279)
+        Me.btnDelAllQua.Name = "btnDelAllQua"
+        Me.btnDelAllQua.Size = New System.Drawing.Size(85, 25)
+        Me.btnDelAllQua.TabIndex = 35
+        Me.btnDelAllQua.Text = "Delete A&ll"
+        Me.btnDelAllQua.UseVisualStyleBackColor = True
+        '
+        'btnCopyAllEncQua
+        '
+        Me.btnCopyAllEncQua.Location = New System.Drawing.Point(292, 279)
+        Me.btnCopyAllEncQua.Name = "btnCopyAllEncQua"
+        Me.btnCopyAllEncQua.Size = New System.Drawing.Size(85, 25)
+        Me.btnCopyAllEncQua.TabIndex = 34
+        Me.btnCopyAllEncQua.Text = "Copy All to"
+        Me.btnCopyAllEncQua.UseVisualStyleBackColor = True
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Lucida Sans Unicode", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(3, 235)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(526, 36)
+        Me.Label25.TabIndex = 33
+        Me.Label25.Text = "Quarantined Files are shown above, they are encrypted using the " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "AES 256-bit Enc" & _
+    "ryption to avoid re-detection and possible execution." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'lstEncQua
+        '
+        Me.lstEncQua.Font = New System.Drawing.Font("Lucida Sans Unicode", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstEncQua.FormattingEnabled = True
+        Me.lstEncQua.HorizontalScrollbar = True
+        Me.lstEncQua.ItemHeight = 16
+        Me.lstEncQua.Location = New System.Drawing.Point(3, 3)
+        Me.lstEncQua.Name = "lstEncQua"
+        Me.lstEncQua.Size = New System.Drawing.Size(592, 228)
+        Me.lstEncQua.TabIndex = 32
+        '
+        'btnDelQua
+        '
+        Me.btnDelQua.Enabled = False
+        Me.btnDelQua.Location = New System.Drawing.Point(414, 279)
+        Me.btnDelQua.Name = "btnDelQua"
+        Me.btnDelQua.Size = New System.Drawing.Size(85, 25)
+        Me.btnDelQua.TabIndex = 31
+        Me.btnDelQua.Text = "&Delete"
+        Me.btnDelQua.UseVisualStyleBackColor = True
+        '
+        'btnDecQua
+        '
+        Me.btnDecQua.Enabled = False
+        Me.btnDecQua.Location = New System.Drawing.Point(201, 279)
+        Me.btnDecQua.Name = "btnDecQua"
+        Me.btnDecQua.Size = New System.Drawing.Size(85, 25)
+        Me.btnDecQua.TabIndex = 30
+        Me.btnDecQua.Text = "Copy to"
+        Me.btnDecQua.UseVisualStyleBackColor = True
+        '
+        'btnRefreshQua
+        '
+        Me.btnRefreshQua.Location = New System.Drawing.Point(6, 279)
+        Me.btnRefreshQua.Name = "btnRefreshQua"
+        Me.btnRefreshQua.Size = New System.Drawing.Size(85, 25)
+        Me.btnRefreshQua.TabIndex = 29
+        Me.btnRefreshQua.Text = "&Refresh"
+        Me.btnRefreshQua.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -2110,7 +2205,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.btnMinTray)
         Me.Controls.Add(Me.btnGCLen)
-        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.btnQuar)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.btnProcExplr)
         Me.Controls.Add(Me.btnMemCleaner)
@@ -2157,6 +2252,8 @@ Partial Class frmMain
         Me.tcLocations.ResumeLayout(False)
         Me.pgBrowsers.ResumeLayout(False)
         Me.pgUserSystem.ResumeLayout(False)
+        Me.tabQuarantine.ResumeLayout(False)
+        Me.tabQuarantine.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2170,7 +2267,7 @@ Partial Class frmMain
     Friend WithEvents btnMemCleaner As System.Windows.Forms.Button
     Friend WithEvents btnProcExplr As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents btnQuar As System.Windows.Forms.Button
     Friend WithEvents btnGCLen As System.Windows.Forms.Button
     Friend WithEvents btnMinTray As System.Windows.Forms.Button
     Friend WithEvents btnAbout As System.Windows.Forms.Button
@@ -2318,5 +2415,15 @@ Partial Class frmMain
     Friend WithEvents btnClean As System.Windows.Forms.Button
     Friend WithEvents btnScan As System.Windows.Forms.Button
     Friend WithEvents progressScanning As System.Windows.Forms.ProgressBar
+    Friend WithEvents tabQuarantine As System.Windows.Forms.TabPage
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents lstEncQua As System.Windows.Forms.ListBox
+    Friend WithEvents btnDelQua As System.Windows.Forms.Button
+    Friend WithEvents btnDecQua As System.Windows.Forms.Button
+    Friend WithEvents btnRefreshQua As System.Windows.Forms.Button
+    Friend WithEvents btnDelAllQua As System.Windows.Forms.Button
+    Friend WithEvents btnCopyAllEncQua As System.Windows.Forms.Button
+    Friend WithEvents dlgSaveQua As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents dlgFldrBrowsQua As System.Windows.Forms.FolderBrowserDialog
 
 End Class

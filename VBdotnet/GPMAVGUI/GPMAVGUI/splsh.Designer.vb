@@ -80,7 +80,7 @@ Partial Class splsh
         Me.Version.Name = "Version"
         Me.Version.Size = New System.Drawing.Size(241, 20)
         Me.Version.TabIndex = 1
-        Me.Version.Text = "Version 14.5"
+        Me.Version.Text = "Version 14.6"
         '
         'Copyright
         '

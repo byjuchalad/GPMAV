@@ -119,7 +119,7 @@ Public Class frmTray
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
-        MsgBox("GPM Antivirus 2014" & vbCrLf & "Version 14.6" & vbCrLf & "Created by GPM", MsgBoxStyle.Information, "About: GPM Antivirus")
+        MsgBox("GPM Antivirus 2014" & vbCrLf & "Version 14.7" & vbCrLf & "Created by GPM", MsgBoxStyle.Information, "About: GPM Antivirus")
     End Sub
 
 
@@ -140,12 +140,12 @@ Public Class frmTray
     Private Sub UpdateGUIInvisibleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UpdateGUIInvisibleToolStripMenuItem.Click
         Try
             If My.Computer.FileSystem.FileExists(AppPath & "\gpmavupdate.exe") Then
-                Dim p As New ProcessStartInfo(AppPath & "\gpmavupdate.exe", "--stdout --log=" & AppPath & "\logs\Autoupdatelog.log")
+                Dim p As New ProcessStartInfo(AppPath & "\gpmavupdate.exe", "--stdout  --config-file=" & AppPath & "\gpmavupdate.conf --log=" & AppPath & "\logs\Autoupdatelog.log")
                 p.WindowStyle = ProcessWindowStyle.Hidden
                 p.CreateNoWindow = True
                 Process.Start(p)
             Else
-                Dim p As New ProcessStartInfo(appp & "\gpmavupdate.exe", "--stdout --log=" & appp & "\logs\Autoupdatelog.log")
+                Dim p As New ProcessStartInfo(appp & "\gpmavupdate.exe", "--stdout  --config-file=" & appp & "\gpmavupdate.conf --log=" & appp & "\logs\Autoupdatelog.log")
                 p.WindowStyle = ProcessWindowStyle.Hidden
                 p.CreateNoWindow = True
                 Process.Start(p)
@@ -180,6 +180,7 @@ Public Class frmTray
 
         Try
             Dim updService As New ServiceController("GPMClamAVRTSvc")
+            Dim updService1 As New ServiceController("GPMAVQuaSvc")
             Dim obj As ManagementObject
             Dim inParams, outParams As ManagementBaseObject
             Dim Result As Integer
@@ -188,6 +189,7 @@ Public Class frmTray
             If My.Computer.FileSystem.FileExists(AppPath & "\GPMClamAVRTSvc.exe") Then
                 'Install the RT Service
                 InstallService1(AppPath & "\GPMClamAVRTSvc.exe")
+
             Else 'condition no 2
                 'Install the Update Service
                 InstallService1(appp & "\GPMClamAVRTSvc.exe")
@@ -199,6 +201,14 @@ Public Class frmTray
                 If Not updService.Status = ServiceControllerStatus.Running Then
                     updService.Start()
                     updService.WaitForStatus(ServiceControllerStatus.Running)
+                End If
+            End If
+
+            'Start the Service
+            If Not updService1 Is Nothing Then
+                If Not updService1.Status = ServiceControllerStatus.Running Then
+                    updService1.Start()
+                    updService1.WaitForStatus(ServiceControllerStatus.Running)
                 End If
             End If
 
@@ -220,6 +230,7 @@ Public Class frmTray
                 End If
             End If
 
+
             systray1.BalloonTipIcon = ToolTipIcon.Info
             systray1.BalloonTipTitle = "GPM Antivirus Tray Message"
             systray1.BalloonTipText = "GPM Antivirus Real Time Scanner Service Installed and Started!"
@@ -227,7 +238,7 @@ Public Class frmTray
 
         Catch ex1 As Exception
             Beep()
-            MsgBox("An Error has occurred! " & vbCrLf & ex1.Message, vbOKOnly + vbCritical, "ERROR!")
+            MsgBox("Possible Error Occured: " & vbCrLf & ex1.Message, vbOKOnly + vbCritical, "ERROR!")
         End Try
 
     End Sub
@@ -294,7 +305,7 @@ Public Class frmTray
 
         Catch ex1 As Exception
             Beep()
-            MsgBox("An Error has occurred! " & vbCrLf & ex1.Message, vbOKOnly + vbCritical, "ERROR!")
+            MsgBox("Possible Error Occured: " & vbCrLf & ex1.Message, vbOKOnly + vbCritical, "ERROR!")
         End Try
     End Sub
 
@@ -410,7 +421,7 @@ Public Class frmTray
 
         Catch ex1 As Exception
             Beep()
-            MsgBox("An Error has occurred! " & vbCrLf & ex1.Message, vbOKOnly + vbCritical, "ERROR!")
+            MsgBox("Possible Error Occured: " & vbCrLf & ex1.Message, vbOKOnly + vbCritical, "ERROR!")
         End Try
     End Sub
 
@@ -463,10 +474,24 @@ Public Class frmTray
 
         Catch ex1 As Exception
             Beep()
-            MsgBox("An Error has occurred! " & vbCrLf & ex1.Message, vbOKOnly + vbCritical, "ERROR!")
+            MsgBox("Possible Error Occured: " & vbCrLf & ex1.Message, vbOKOnly + vbCritical, "ERROR!")
+        End Try
+    End Sub
+    Private Sub ProcessExplorerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProcessExplorerToolStripMenuItem.Click
+        Try
+            If My.Computer.FileSystem.FileExists(AppPath & "\GPMAVProcExplr.exe") Then
+                Shell(AppPath & "\GPMAVProcExplr.exe", AppWinStyle.NormalFocus)
+            Else
+                Process.Start(appp & "\GPMAVProcExplr.exe")
+            End If
+        Catch ex1 As Exception
+            Beep()
+            MsgBox("An Error has occurred! " & vbCrLf & "File not found!", vbOKOnly + vbCritical, "ERROR!")
         End Try
     End Sub
 #End Region
+
+
 
 
 

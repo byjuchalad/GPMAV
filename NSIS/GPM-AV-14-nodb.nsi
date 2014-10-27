@@ -14,18 +14,17 @@ InstallDirRegKey HKLM "Software\GPMAV" "Install_Dir"
 
   ;Name and file
   Name "GPM Antivirus"
-  OutFile "GPM_Antivirus_setup_v14_6_beta_db.exe"
+  OutFile "GPM_Antivirus_setup_v14_7_beta_nodb.exe"
 
   ;Default installation folder
   InstallDir "$%homedrive%\GPMAV"
 
-BrandingText "GPM Antivirus 14.6b"
+BrandingText "GPM Antivirus 14.7b"
 
   ;Request application privileges for Windows Vista
   RequestExecutionLevel admin
   
-Icon "H:\I\SYS\SRC\NEW\PRJ\GPMClamAV\v14\5\GPM_NEW_ALL.ico"
-UninstallIcon "H:\I\SYS\SRC\NEW\PRJ\GPMClamAV\v14\5\GPM_NEW_ALL.ico"
+Icon "H:\ACTV\AV\v14\7\NSIS\GPM_NEW_ALL.ico"
 
 ;--------------------------------
 ;Interface Settings
@@ -69,7 +68,7 @@ Section "GPM Antivirus Files (required)"
 
 
   
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "DisplayName" "GPM Antivirus v14.6b"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "DisplayName" "GPM Antivirus v14.7b"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "UninstallString" '"$INSTDIR\uninstall.exe"'
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "NoModify" 1
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPMAV" "NoRepair" 1
@@ -88,7 +87,9 @@ Section "GPM Antivirus Files (required)"
    
   WriteUninstaller "uninstall.exe"
   
+  
   Exec "$INSTDIR\CACertInstall.exe"
+  Exec "$INSTDIR\GPMAVSvcInst.exe"
   Exec "$INSTDIR\GPMAV-Tray.exe"
   
 SectionEnd
@@ -120,8 +121,8 @@ Section "Uninstall"
   
   DeleteRegValue HKEY_LOCAL_MACHINE "Software\Microsoft\Windows\CurrentVersion\Run" "GPMAVGUI"
 
-  CreateDirectory $%homedrive%\gpmavbackup
-  CopyFiles $INSTDIR\quarantine\*.* $%homedrive%\gpmavbackup
+  CreateDirectory $%homedrive%\gpmavencquarbackup
+  CopyFiles $INSTDIR\encryptedquarantine\*.* $%homedrive%\gpmavencquarbackup
 
 
   Delete /REBOOTOK $INSTDIR\*.*
@@ -134,11 +135,11 @@ SectionEnd
 
 
 
-VIProductVersion "14.0.0.6"
+VIProductVersion "14.0.0.7"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "GPM Antivirus"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "GPM Antivirus"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "GPM"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalTrademarks" "GPM Antivirus is a trademark of GPM."
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "© 2010-2014 GPM"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "GPM Antivirus"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "14.0.0.6"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "14.0.0.7"

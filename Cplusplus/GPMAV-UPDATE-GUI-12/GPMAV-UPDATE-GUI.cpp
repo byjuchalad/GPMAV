@@ -139,6 +139,9 @@ char *MakeCmdLine(UINT id)
 			cmdline.append(" --stdout --log=");
 			cmdline.append(WinGetEnv("homedrive"));
 			cmdline.append("\\GPMAV\\logs\\Autoupdatelog.log""");
+			cmdline.append(" --config-file=");
+			cmdline.append(WinGetEnv("homedrive"));
+			cmdline.append("\\GPMAV\\gpmavupdate.conf""");
             break;
 
         default:
