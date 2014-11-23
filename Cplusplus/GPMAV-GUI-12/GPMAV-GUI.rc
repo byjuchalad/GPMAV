@@ -60,7 +60,7 @@ BEGIN
     CONTROL         "Verbose",IDC_EXVERBOSE,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,57,42,11
     CONTROL         "Do not Remove Temp Files",IDC_EXDONOTREMTEMP,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,68,95,11
     CONTROL         "Load Official DB Only",IDC_LOADONLYODB,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,80,78,11
-    CONTROL         "Detect PUA",IDC_DETECTPUA,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,91,78,11
+    CONTROL         "Detect PUA",IDC_DETECTPUA,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,91,99,11
     CONTROL         "Detect Broken EXE Files",IDC_DETECTBROKENEXE,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,101,94,11
     CONTROL         "Block Encrypted Archives",IDC_BLOCKENCARCH,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,189,111,96,11
     CONTROL         "Do not scan files > 200MB",IDC_DONOTSCAN150,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,289,56,102,11
@@ -91,8 +91,8 @@ IDI_ICON                ICON                    "GPMAV-GUI.ico"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 14,0,0,7
- PRODUCTVERSION 14,0,0,7
+ FILEVERSION 14,0,0,8
+ PRODUCTVERSION 14,0,0,8
  FILEFLAGSMASK 0x0L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -110,14 +110,14 @@ BEGIN
             VALUE "Comments", "GPM Antivirus Scanner GUI"
             VALUE "CompanyName", "GPM"
             VALUE "FileDescription", "GPMAV SCANGUI"
-            VALUE "FileVersion", "14.0.0.7"
+            VALUE "FileVersion", "14.0.0.8"
             VALUE "InternalName", "GPMAV-SCANGUI.exe"
             VALUE "LegalCopyright", "Copyright (C) 2010-2014 GPM / ClamWin Pty. Ltd."
             VALUE "LegalTrademarks", "GPM"
             VALUE "OriginalFilename", "GPMAV-SCANGUI.exe"
-            VALUE "OriginalFileVersion", "14, 0, 0, 7"
+            VALUE "OriginalFileVersion", "14, 0, 0, 8"
             VALUE "ProductName", "GPMAV SCANGUI"
-            VALUE "ProductVersion", "14.0.0.7"
+            VALUE "ProductVersion", "14.0.0.8"
         END
     END
     BLOCK "VarFileInfo"

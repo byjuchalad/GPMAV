@@ -507,6 +507,9 @@ char *MakeCmdLine(UINT id)
 			cmdline.append(" --stdout --log=");
 			cmdline.append(WinGetEnv("homedrive"));
 			cmdline.append("\\GPMAV\\logs\\Autoupdatelog.log""");
+			cmdline.append(" --config-file=");
+			cmdline.append(WinGetEnv("homedrive"));
+			cmdline.append("\\GPMAV\\gpmavupdate.conf"); //Added 11/22/14
             break;
 
 		case IDC_DISPVDB1:
@@ -673,6 +676,7 @@ BOOL CALLBACK EnumChildProc(HWND hwnd, LPARAM lParam)
 		case IDC_RADIO2:
         {
             INT def = (id == IDC_RECURSE) ? 1 : 0;
+			
             if (save)
                 WritePrivateProfileString("dialogs", key, (IsDlgButtonChecked(MainDlg, id) == BST_CHECKED) ? "1" : "0", INIFILE);
             else
@@ -680,7 +684,8 @@ BOOL CALLBACK EnumChildProc(HWND hwnd, LPARAM lParam)
                 if (GetPrivateProfileInt("dialogs", key, def, INIFILE))
                     CheckDlgButton(MainDlg, id, 1);
             }
-            break;
+            break; //UNDONE: check default checkbox
+
         }
 
         default:

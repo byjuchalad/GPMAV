@@ -64,11 +64,14 @@ DWORD WINAPI OutputThread(LPVOID lpvThreadParam)
 
     sprintf(msg, "\r\nProcess exited with %d code\r\n", exitcode);
     WriteStdOut(msg, FALSE);
-    EnableWindow(GetDlgItem(MainDlg, IDC_SCAN), TRUE);
+
+	EnableWindow(GetDlgItem(MainDlg, IDC_SCAN), TRUE);
 	EnableWindow(GetDlgItem(MainDlg, IDC_SCANMEM), TRUE);
+	EnableWindow(GetDlgItem(MainDlg, IDC_UPDATE), TRUE);
 	EnableWindow(GetDlgItem(MainDlg, IDC_DISPVDB1), TRUE);
 	EnableWindow(GetDlgItem(MainDlg, IDC_DISPVDB2), TRUE);
 	EnableWindow(GetDlgItem(MainDlg, IDC_DISPVDB3), TRUE);
+
     isScanning = FALSE;
     return 1;
 }
@@ -124,6 +127,11 @@ DWORD WINAPI PipeToClamAV(LPVOID lpvThreadParam)
     CloseHandle(hChildStdoutRd);
 
     EnableWindow(GetDlgItem(MainDlg, IDC_SCAN), FALSE);
+	EnableWindow(GetDlgItem(MainDlg, IDC_SCANMEM), FALSE);
+	EnableWindow(GetDlgItem(MainDlg, IDC_UPDATE), FALSE);
+	EnableWindow(GetDlgItem(MainDlg, IDC_DISPVDB1), FALSE);
+	EnableWindow(GetDlgItem(MainDlg, IDC_DISPVDB2), FALSE);
+	EnableWindow(GetDlgItem(MainDlg, IDC_DISPVDB3), FALSE);
     SetWindowText(GetDlgItem(MainDlg, IDC_STATUS), "");
 
     WriteStdOut(pszCmdLine, FALSE);
